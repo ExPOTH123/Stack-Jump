@@ -32,7 +32,16 @@ public class PlayerInputHandler : MonoBehaviour
             isLanded = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began) {
+                if (isLanded) {
+                    this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, jumpPower, 0.0f));
+                }
+            }
+        }
+        else if(Input.GetButtonDown("Fire1")) {
             if (isLanded) {
                 this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, jumpPower, 0.0f));
             }
