@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public Setting_3C setting3C = null;
+
     Vector3 position;
 
     float speed = 10.0f;
@@ -19,9 +21,11 @@ public class CameraManager : MonoBehaviour
 
     public void MoveCameraUp() {
         position = this.transform.position + Vector3.up;
+        speed = setting3C.moveUpSpeed;
     }
 
     public void GameOverCameraAnimation() {
-        position = this.transform.position + Vector3.back * 15;
+        position = this.transform.position + Vector3.back * setting3C.zoomOutDistance;
+        speed = setting3C.zoomOutSpeed;
     }
 }

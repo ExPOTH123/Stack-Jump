@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    float speed = 5.0f;
-
     bool isPerfect = false;
     bool isMoving = true;
+
+    float speed = 5.0f;
 
     BlockHandler blockHandler = null;
 
@@ -34,6 +34,10 @@ public class Block : MonoBehaviour
     public void Hit() {
         isMoving = false;
         blockHandler.Spawn();
+    }
+
+    public void SetSpeed(float speedIn) {
+        speed = speedIn;
     }
 
     void OnTriggerEnter (Collider other) {

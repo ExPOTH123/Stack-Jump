@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlockHandler : MonoBehaviour
 {
+    public Setting_Level settingLevel = null;
+
     int childCount = 1;
     GameObject block = null;
 
@@ -23,6 +25,8 @@ public class BlockHandler : MonoBehaviour
         childCount++;
         block.transform.parent = this.transform;
         block.gameObject.name = "Block";
+        float speed = Random.Range(settingLevel.minSpeed, settingLevel.maxSpeed);
+        block.GetComponent<Block>().SetSpeed(speed);
         cameraManager.MoveCameraUp();
         if(this.transform.childCount > 20) {
             Destroy(this.transform.GetChild(0).gameObject);

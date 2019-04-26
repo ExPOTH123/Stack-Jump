@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    float gravity = 98f;
-    float jumpPower = 700.0f;
-    float pushDeadPower = 700.0f;
+    public Setting_3C setting3C = null;
 
     bool isLanded = false;
     bool isDead = false;
@@ -37,13 +35,13 @@ public class PlayerInputHandler : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began) {
                 if (isLanded) {
-                    this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, jumpPower, 0.0f));
+                    this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, setting3C.jumpForce, 0.0f));
                 }
             }
         }
         else if(Input.GetButtonDown("Fire1")) {
             if (isLanded) {
-                this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, jumpPower, 0.0f));
+                this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, setting3C.jumpForce, 0.0f));
             }
         }
     }
@@ -61,6 +59,6 @@ public class PlayerInputHandler : MonoBehaviour
     {
         isDead = true;
         Destroy(this.GetComponent<Collider>());
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(side * pushDeadPower, 0.0f, 0.0f));
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(side * setting3C.deadForce, 0.0f, 0.0f));
     }
 }

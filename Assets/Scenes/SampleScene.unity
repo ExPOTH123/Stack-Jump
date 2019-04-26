@@ -367,6 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e54407c2cfd874dbf0462f4df1235c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setting3C: {fileID: 11400000, guid: ed34cecbbb5201e4ba83fb1b8ef47d49, type: 2}
 --- !u!1 &688359771
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,8 +488,8 @@ GameObject:
   - component: {fileID: 1521105443}
   - component: {fileID: 1521105442}
   - component: {fileID: 1521105441}
-  - component: {fileID: 1521105440}
   - component: {fileID: 1521105445}
+  - component: {fileID: 1521105440}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -642,6 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40d2ca4713aaa144b3a802fc838e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setting3C: {fileID: 11400000, guid: ed34cecbbb5201e4ba83fb1b8ef47d49, type: 2}
 --- !u!54 &1981781257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -715,3 +717,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf544a669d15664e845c636a1271a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingLevel: {fileID: 11400000, guid: 7ec014f2cf852e649ba8259823da2565, type: 2}
