@@ -6,13 +6,16 @@ public class PlayerInputHandler : MonoBehaviour
 {
     public Setting_3C setting3C = null;
 
-    bool isLanded = false;
-    bool isDead = false;
+    Player player;
+
+    void Awake() {
+        player = this.gameObject.GetComponent<Player>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDead) {
+        if (player.isPlayerDead()) {
             return;
         }
 
@@ -22,25 +25,25 @@ public class PlayerInputHandler : MonoBehaviour
 
         RaycastHit hitTarget;
         if (Physics.Linecast(playerMeshCenter, lineCast_Endpoint, out hitTarget)) {
-            if (!isLanded) {
+            if (!player.isPlayerLanded()) {
                 LandedOnBlock(hitTarget.transform.GetComponent<Block>());
             }
         }
         else {
-            isLanded = false;
+            player.setLanded(false);
         }
 
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began) {
-                if (isLanded) {
+                if (player.isPlayerLanded()) {
                     this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, setting3C.jumpForce, 0.0f));
                 }
             }
         }
         else if(Input.GetButtonDown("Fire1")) {
-            if (isLanded) {
+            if (player.isPlayerLanded()) {
                 this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, setting3C.jumpForce, 0.0f));
             }
         }
@@ -48,7 +51,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     void LandedOnBlock(Block block)
     {
-        isLanded = true;
+        player.setLanded(true);
 
         if (block != null) {
             block.Hit();
@@ -57,7 +60,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void Dead(int side)
     {
-        isDead = true;
+        player.setDead(true);
         Destroy(this.GetComponent<Collider>());
         this.GetComponent<Rigidbody>().AddForce(new Vector3(side * setting3C.deadForce, 0.0f, 0.0f));
     }
