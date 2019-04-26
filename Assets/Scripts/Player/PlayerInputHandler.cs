@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerInputHandler : MonoBehaviour
 {
     public Setting_3C setting3C = null;
+    public GameManager gameManager = null;
 
     Player player;
+
+    int combo = 0;
 
     void Awake() {
         player = this.gameObject.GetComponent<Player>();
@@ -54,7 +57,18 @@ public class PlayerInputHandler : MonoBehaviour
         player.setLanded(true);
 
         if (block != null) {
+            if(block.isPerfectLanded()) {
+                combo++;
+                if(combo > player.streak) {
+                    player.streak++;
+                    combo = 0;
+                }
+            }
+            else {
+                player.streak = 0;
+            }
             block.Hit();
+            GameManager.instance.AddScore(1 + player.streak);
         }
     }
 

@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     bool isLanded = false;
     bool isDead = false;
 
+    public int streak = 0;
+
     public void setLanded(bool isLanded_In) {
         isLanded = isLanded_In;
     }

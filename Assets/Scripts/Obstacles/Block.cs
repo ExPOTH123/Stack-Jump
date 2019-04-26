@@ -40,6 +40,10 @@ public class Block : MonoBehaviour
         speed = speedIn;
     }
 
+    public bool isPerfectLanded() {
+        return isPerfect;
+    }
+
     void OnTriggerEnter (Collider other) {
         if(other.transform.parent.name == "Player") {
             if(isMoving) {
