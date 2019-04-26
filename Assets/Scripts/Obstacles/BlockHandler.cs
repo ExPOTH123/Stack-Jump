@@ -11,7 +11,6 @@ public class BlockHandler : MonoBehaviour
 
     CameraManager cameraManager = null;
 
-    // Start is called before the first frame update
     void Awake()
     {
         block = this.transform.GetChild(0).gameObject;
@@ -23,11 +22,14 @@ public class BlockHandler : MonoBehaviour
         side = (side == 1)? 1:-1;
         block = Instantiate(block, new Vector3(side * 4.0f, childCount + 0.5f, 0.0f), Quaternion.identity) as GameObject;
         childCount++;
+
         block.transform.parent = this.transform;
         block.gameObject.name = "Block";
         float speed = Random.Range(settingLevel.minSpeed, settingLevel.maxSpeed);
         block.GetComponent<Block>().SetSpeed(speed);
+
         cameraManager.MoveCameraUp();
+        
         if(this.transform.childCount > 20) {
             Destroy(this.transform.GetChild(0).gameObject);
         }
