@@ -47,6 +47,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
         else if(Input.GetButtonDown("Fire1")) {
             if (player.isPlayerLanded()) {
+                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, setting3C.jumpForce, 0.0f));
             }
         }
