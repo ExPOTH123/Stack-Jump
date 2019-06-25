@@ -33,7 +33,7 @@ public class Block : MonoBehaviour
 
     public void Hit() {
         isMoving = false;
-        blockHandler.Spawn();
+        // blockHandler.Spawn();
     }
 
     public void SetSpeed(float speedIn) {
